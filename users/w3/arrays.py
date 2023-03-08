@@ -116,6 +116,11 @@ class Language:
 languages = [Language("Python", "🐍"), Language("Javascript", "🥷")]
 for language in languages:
   print(language.sendMessage())
-  
-
+    
+    
+  # for loops
+  for i in range(0,3):
+    for j in range(0,3):
+      print(f"i: {i} and j: {j} sum: {i+j}")
+      
     
