@@ -1,4 +1,5 @@
 from collections import defaultdict, Counter
+import heapq
 
 def topKFrequent(nums:list, k:int)->list:
   '''
@@ -14,6 +15,44 @@ def topKFrequent(nums:list, k:int)->list:
   '''
   # using heap module
   obj = {}
+  heap = []
+  most_freq = []
+  for num in nums:
+    # {
+    #   3:1,
+    #   0:2,
+    #   1:1
+    # }
+    if num in obj:
+      obj[num] += 1
+    else:
+      obj[num]=1
+      
+  # store it in heap, purpose is to get the max
+  for el, freq in obj.items():
+    print(f"element:{el}, frequency:{freq}")
+    tupled = (-freq,el)
+    heap.append(tupled)
+    print(f"tupled:{tupled}")
+    
+  print(f"heap:{heap}")
+  heapq.heapify(heap)
+  print(f"heap heapified:{heap}")
   
-print(topKFrequent([3,0,1,0], 2))
+  for i in range(k):
+    freq, element = heapq.heappop(heap)
+    print(f"freq:{freq}, element:{element}")
+    most_freq.append(element)
+  
+
+  
+      
+  return tuple(most_freq)
+
+
+    
+    
+  
+  
+print(topKFrequent(['a','b','b','c','c','c' ], 2))
   
